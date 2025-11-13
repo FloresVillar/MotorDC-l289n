@@ -1,25 +1,7 @@
 import numpy as np 
 import sys
 ### CONECTAR ARDUINO
-def ejercicio5_clase2():
-    num = input("numero")
-    x = float(num)
-    if  x <= 0.0:
-        f = lambda x : x**2 - x
-    else:
-        f = lambda x : -x**2 + 3*x
-    print(f"f({x}) = {f(x)}") 
-
-def ejercicio6_clase2():
-    param = input("ingresa los parametros a, b, c")
-    param = param.split(" ")
-    try:
-        coef = [float(e) for e in param]
-        a ,b ,c = coef[:]
-        raiz = lambda x: (1/2*a)*(b**2 - 4*a*c)**0.5
-    except TypeError:
-        print("tipo error")
-
+ 
 import tkinter as tk
 def click_boton_label():
     print("BOTON CLICKEADO")
@@ -121,4 +103,5 @@ if __name__=='__main__':
     #ejercicio5_clase2()
     #tkinter_ventana_principal_clase5()
     #sliders_clase6()
-    ejercicio3_clase6()
+    #tkinter_ventana_principal_clase5()
+    sliders_clase6()

@@ -41,3 +41,10 @@ Ademas si se quiere variar la velocidad conectamos el pin 5 del arudino al jumpe
 
 La bateria por su parte se conecta a los bordes de potencia (CAJAS AZULES) 12V(+) y GND(- referencia electrica "tierra") respectivamente.
 Ahora bien como se va a medir potencias tanto arduino como L289n deben tener la misma referencia desde el cual medir dicho voltaje, luego se conecta tanto el negativo de la bateria como el GND del arduino al  GND del l289n.
+
+Para modificacion_velocidad_PWM:
+creamos una variable 'arduino' usamos serial.Serial() para la vinculacion con arduino transmitiendo 9600 bit por segundo, usamos modulacion por ancho de banda, para simular un voltaje variable, usaremos para ese fin un pin digiral HIGH-LOW. 
+
+Se definen una funcion interna para la modificacion del valor que sera enviado al arduino via 'arduino.write()' , seguidamente se crea la 'ventana = tk.Tk()'
+y el slider dentro de la ventana con los argumentos recomendados, con el 'command' = actualizar_valor , de modo que manipulando el handle modificamos el valor envviado al arduino.El slider se posiciona via place() quien usa el sistema x y y hacia abajo ,lo posicionamos el el noroeste 'nw'
+
