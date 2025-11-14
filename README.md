@@ -1,3 +1,4 @@
+<!-- ACTIVE Preview README.md  es el boton con 'dos rectangulos y  una lupa' justo arriba de esta ventana  -->
 # PC3 Control inteligente de velocidad de motor
 
 **Grupo 1** 
@@ -5,10 +6,10 @@
 Se implementa una interfaz con Tkinter que:
 
 -  Permite ajustar la velocidad del motor mediante un Scale (PWM de 0–255). 
--  Muestrar la velocidad actual en porcentaje. 
--  Incluir un botón de inicio y parada que detenga inmediatamente el motor. 
--  Al  usuario mantener el motor a más del 80% de velocidad durante más de 10 segundos, muestra una alerta visual (roja) en la interfaz. 
-- Integrar un gráfico de evolución de velocidad vs. tiempo
+-  Muestra la velocidad actual en porcentaje. 
+-  Incluye un botón de inicio y parada que detenga inmediatamente el motor. 
+-  Mantiene el motor a más del 80% de velocidad durante más de 10 segundos, muestra una alerta visual (roja) en la interfaz. 
+- Integra un gráfico de evolución de velocidad vs. tiempo
 
 L298n es un modulo para manejar motores , sera el puente entre el motor que requiere potencia y el arduino , quien trabaja con voltajes menores.
 
@@ -41,19 +42,19 @@ Ademas si se quiere variar la velocidad conectamos el pin 9(pwm) del arudino al 
 
 La bateria por su parte se conecta a los bordes de potencia (CAJAS AZULES) 12V(+) y GND(- referencia electrica "tierra") respectivamente.
 Ahora bien como se va a medir potencias tanto arduino como L289n deben tener la misma referencia desde el cual medir dicho voltaje, luego se conecta tanto el negativo de la bateria como el GND del arduino al  GND del l289n.
- 
-creamos una variable 'arduino' usamos serial.Serial() para la vinculacion con arduino transmitiendo 9600 bit por segundo, usamos modulacion por ancho de banda, para simular un voltaje variable, usaremos para ese fin un pin digiral HIGH-LOW. 
+## Pasos previos
+Creamos una variable 'arduino' usamos serial.Serial() para la vinculacion con arduino transmitiendo 9600 bit por segundo, usamos modulacion por ancho de banda, para simular un voltaje variable, usaremos para ese fin un pin digiral HIGH-LOW. 
 
-actualizar_valor() define una  funcion interna para la modificacion del valor que sera enviado al arduino via **arduino.write()**
+Actualizar_valor() define una  funcion interna para la modificacion del valor que sera enviado al arduino via **arduino.write()**
 
-palanca_motor() define una variable global motor_encendido
+Palanca_motor() define una variable global motor_encendido
 si este este tiene valor 1 apagamos motor
 Caso contrario encendemos
-Luego se envia a arduino {valor},{1 ó 0} condificados
+Luego se envia a arduino {valor},{1 ó 0} codificados
 
 seguidamente se crea la **ventana = tk.Tk()**, asignamos un titulo, definimos el tamaño de la ventana.
 
-y el slider dentro de la ventana con los argumentos recomendados, con el **command' = actualizar_valor** , de modo que manipulando el handle modificamos el valor enviado al arduino.
+y el slider dentro de la ventana con los argumentos recomendados, con el **command' = _on_escale** , de modo que manipulando el handle modificamos el valor enviado al arduino.
 El slider se posiciona via place() quien usa el sistema x y y hacia abajo ,lo posicionamos el el centro  **anchor='center'**
 
 Tambien se crea un **stop_motor** dentro de ventana y el **command** usado por este es palanca_motor  , que justamente enciende o apaga el motor
@@ -61,7 +62,7 @@ Tambien se crea un **stop_motor** dentro de ventana y el **command** usado por e
 La ventana se muestra y al finalizar cerramos el arduino
 
 Para el testeo usamos un mock que simula la conexion serial con arudino UNO.
-
+## Implementacion real
 Sin embargo la implementacion real es un tanto más complejo. El codigo es reformulado y repotenciado 
 
 importamos los modulos de utilidad:<br>
@@ -71,7 +72,7 @@ Con esto tendremos un dashboard en python que controlara un motor al cual tendre
 Se definen constantes globales: 
 - PWM_MAX = 255 (maxima velocidad del motor)
 - ALERT_SECONDS = 10.0 (para la alerta pedida)
-- PLOT_WINDOWS_SECONDS = 60 (graficamos los 60 sgds ultimos)
+- PLOT_WINDOWS_SECONDS = 60 (graficamos los 60 sgs ultimos)
 
 
 Seguidamente definimos nuestra clase principal **MotorControllerApp** 
