@@ -2,8 +2,16 @@
 # PC3 Control inteligente de velocidad de motor
 
 **Grupo 1** 
-**Control inteligente de velocidad de motor Conecta un motor DC con un módulo L298N al Arduino**. 
-Se implementa una interfaz con Tkinter que:
+**Control inteligente de velocidad de un motor DC mediante un L298N conectado al Arduino UNO**.<br> 
+- Omar Romulo Quispe Santos
+- Esau Flores Villar
+- Milagros Cristina Ruiz Arica
+- Brian Alberto Huaman Garcia
+- David Fernando Reeves Goñi
+- Jhan Carlos Ccanto Quispe
+
+<br>
+Se implementa una interfaz con Tkinter que:<br>
 
 -  Permite ajustar la velocidad del motor mediante un Scale (PWM de 0–255). 
 -  Muestra la velocidad actual en porcentaje. 
