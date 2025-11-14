@@ -37,14 +37,29 @@ PIN 6=0 →→  IN1=0  →→  OUT1=GND
 PIN 7 =1 →→ IN2=1  →→ OUT2=6V
 #obtenemos el giro contrario
 ```
-Ademas si se quiere variar la velocidad conectamos el pin 5 del arudino al jumper ENA de activacion para el MOTOR1
+Ademas si se quiere variar la velocidad conectamos el pin 5(pwm) del arudino al jumper ENA de activacion para el MOTOR1
 
 La bateria por su parte se conecta a los bordes de potencia (CAJAS AZULES) 12V(+) y GND(- referencia electrica "tierra") respectivamente.
 Ahora bien como se va a medir potencias tanto arduino como L289n deben tener la misma referencia desde el cual medir dicho voltaje, luego se conecta tanto el negativo de la bateria como el GND del arduino al  GND del l289n.
-
-Para modificacion_velocidad_PWM:
+ 
 creamos una variable 'arduino' usamos serial.Serial() para la vinculacion con arduino transmitiendo 9600 bit por segundo, usamos modulacion por ancho de banda, para simular un voltaje variable, usaremos para ese fin un pin digiral HIGH-LOW. 
 
-Se definen una funcion interna para la modificacion del valor que sera enviado al arduino via 'arduino.write()' , seguidamente se crea la 'ventana = tk.Tk()'
-y el slider dentro de la ventana con los argumentos recomendados, con el 'command' = actualizar_valor , de modo que manipulando el handle modificamos el valor envviado al arduino.El slider se posiciona via place() quien usa el sistema x y y hacia abajo ,lo posicionamos el el noroeste 'nw'
+actualizar_valor() define una  funcion interna para la modificacion del valor que sera enviado al arduino via **arduino.write()**
 
+palanca_motor() define una variable global motor_encendido
+si este este tiene valor 1 apagamos motor
+Caso contrario encendemos
+Luego se envia a arduino {valor},{1 ó 0} condificados
+
+seguidamente se crea la **ventana = tk.Tk()**, asignamos un titulo, definimos el tamaño de la ventana.
+
+y el slider dentro de la ventana con los argumentos recomendados, con el **command' = actualizar_valor** , de modo que manipulando el handle modificamos el valor enviado al arduino.
+El slider se posiciona via place() quien usa el sistema x y y hacia abajo ,lo posicionamos el el centro  **anchor='center'**
+
+Tambien se crea un **boton_apagar** dentro de ventana y el **command** usado por este es palanca_motor  , que justamente enciende o apaga el motor
+
+La ventana se muestra y al finalizar cerramos el arduino
+
+Para el testeo usamos un mock que simula la conexion serial con arudino UNO.
+
+![prueba](prueba.png)
