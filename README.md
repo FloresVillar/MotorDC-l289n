@@ -9,6 +9,8 @@
 - Brian Alberto Huaman Garcia
 - David Fernando Reeves Goñi
 - Jhan Carlos Ccanto Quispe
+- Carlos Sinai Unda Miguel
+- José Manuel Ravichagua Marín
 
 <br>
 Se implementa una interfaz con Tkinter que:<br>
